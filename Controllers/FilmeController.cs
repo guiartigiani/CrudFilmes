@@ -30,16 +30,17 @@ namespace Fiap.Web.Aula03.Controllers
         {
             _context.Filmes.Add(filme);
             _context.SaveChanges();
-            TempData["mensagem"] = "Veículo cadastrado!";
-            return View();
+            TempData["mensagem"] = "Filme Cadastrado!";
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Delete(int id)
         {
 
             _context.Filmes.Remove(_context.Filmes.Find(id));
             _context.SaveChanges();
+            TempData["mensagem"] = "Filme Removido!";
             return RedirectToAction("Index");
 
         }
@@ -55,6 +56,7 @@ namespace Fiap.Web.Aula03.Controllers
         {
             _context.Filmes.Update(filme);
             _context.SaveChanges();
+            TempData["mensagem"] = "Alterações Salvas!";
             return RedirectToAction("Index");
         }
 

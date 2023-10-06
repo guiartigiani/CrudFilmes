@@ -4,12 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<alert alert-type="@TempData["mensagem"]"></alert>
 
-<p>
-    <a asp-action="Cadastrar">Create New</a>
-</p>
-<table class="table">
+<h1>Lista de Filmes</h1>
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -61,10 +60,34 @@
                 @Html.DisplayFor(modelItem => item.Bilheteria)
             </td>
             <td>
-                <a asp-action="Update" asp-route-id="@item.FilmeId">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.FilmeId">Delete</a>
+                    <a asp-action="Update" asp-route-id="@item.FilmeId" class="btn btn-primary">Editar</a> |
+                    <button onclick="removeKey.value = @item.FilmeId" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Deletar
+                    </button>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja excluir esse Filme?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="Delete">
+                    <input type="hidden" name="id" id="removeKey" />
+                    <button type="submit" class="btn btn-danger">Sim</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

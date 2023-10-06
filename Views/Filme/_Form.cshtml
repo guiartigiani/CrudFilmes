@@ -1,0 +1,40 @@
+﻿@model Filme;
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Titulo" class="control-label"></label>
+    <input asp-for="Titulo" class="form-control" />
+    <span asp-validation-for="Titulo" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Sinopse" class="control-label"></label>
+    <input asp-for="Sinopse" class="form-control" />
+    <span asp-validation-for="Sinopse" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Categoria" class="control-label"></label>
+    <select asp-for="Categoria" asp-items="@Html.GetEnumSelectList<CategoriaFilme>()" class="form-select">
+        <option></option>
+    </select>
+    <span asp-validation-for="Categoria" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="DataLancamento" class="control-label"></label>
+    <input asp-for="DataLancamento" class="form-control" />
+    <span asp-validation-for="DataLancamento" class="text-danger"></span>
+</div>
+<div class="form-group form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" asp-for="Disponivel" /> @Html.DisplayNameFor(model => model.Disponivel)
+    </label>
+</div>
+<div class="form-group">
+    <label asp-for="Duracao" class="control-label"></label>
+    <input asp-for="Duracao" class="form-control" />
+    <span asp-validation-for="Duracao" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bilheteria" class="control-label"></label>
+    <input asp-for="Bilheteria" class="form-control" />
+    <span asp-validation-for="Bilheteria" class="text-danger"></span>
+</div>
